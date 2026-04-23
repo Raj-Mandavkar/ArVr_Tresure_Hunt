@@ -1,0 +1,6 @@
+{
+  "name": "AR Treasure Hunt Explorer",
+  "description": "An interactive WebAR treasure hunt where users scan markers to receive clues, interact with virtual elements, and progress through a guided hunt using their device camera.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}

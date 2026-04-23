@@ -1,0 +1,230 @@
+
+ 📄 Product Requirements Document (PRD)
+
+ 📱 Product Name: **AR Treasure Hunt Explorer**
+
+
+
+ 1. 🎯 Objective
+
+Create an interactive **Augmented Reality (AR) treasure hunt mobile application** where users scan markers to receive clues, interact with virtual elements, and progress through a guided hunt experience.
+
+The goal is to deliver a **fun, intuitive, and visually engaging AR experience** suitable for demonstration and educational purposes.
+
+
+
+ 2. 👤 Target Users
+
+* Students (primary audience)
+* Teachers (demo evaluators)
+* Casual users interested in AR experiences
+
+
+
+ 3. 🧩 Core Features
+
+ 3.1 📖 Help Button (Instruction System)
+
+**Description:**
+A persistent help icon that displays instructions.
+
+**Requirements:**
+
+* Visible on main screen at all times
+* On click → opens instruction overlay
+* Includes:
+
+  * How to scan markers
+  * Objective of the game
+  * Navigation guidance
+
+
+
+ 3.2 📸 MarkerBased AR Scanning
+
+**Description:**
+Users scan predefined markers (images) to trigger AR content.
+
+**Requirements:**
+
+* Use image recognition markers
+* Each marker triggers:
+
+  * A clue (text + optional voice)
+  * Visual AR object (e.g., treasure chest, arrow)
+
+
+
+ 3.3 🧭 Sequential Clue System
+
+**Description:**
+Markers unlock in sequence.
+
+**Requirements:**
+
+* Marker 1 → unlocks Marker 2
+* Prevent skipping steps
+* Store progress locally
+
+
+
+ 3.4 🎮 Interactive Elements
+
+**Description:**
+User interaction with AR objects.
+
+**Examples:**
+
+* Tap treasure chest → opens
+* Tap object → reveals clue
+* Drag or rotate objects
+
+
+
+ 3.5 🔊 Sound Effects & Feedback
+
+**Description:**
+Audio enhances immersion.
+
+**Requirements:**
+
+* Sound when marker detected
+* Background music (optional)
+* Voice narration for clues
+* Feedback sounds (success, error)
+
+
+
+ 3.6 🎨 UI/UX Design
+
+**Description:**
+Clean, modern interface.
+
+**Screens:**
+
+* Home Screen
+* AR Camera Screen
+* Instruction Overlay
+* Completion Screen
+
+**Design Principles:**
+
+* Minimal clutter
+* Large buttons
+* High contrast text
+
+
+
+ 3.7 🏁 Completion Screen
+
+**Description:**
+Displayed after final marker.
+
+**Includes:**
+
+* “You found the treasure!” message
+* Animation (confetti / chest opening)
+* Restart option
+
+
+
+ 4. 🧱 Technical Requirements
+
+ Recommended Stack (FASTEST for Demo)
+
+ Option 1 (Best for Quick Build)
+
+* **Engine:** Unity
+* **AR SDK:** Vuforia
+
+ Option 2 (Alternative)
+
+* Unity AR Foundation (slower setup)
+
+👉 Use **Vuforia** for faster markerbased tracking.
+
+
+
+ 5. 🗂️ System Architecture
+
+ Components:
+
+* Camera Module (AR feed)
+* Marker Recognition Engine
+* Clue Manager
+* UI Layer
+* Audio Manager
+* Game State Manager
+
+
+
+ 6. 🔄 User Flow
+
+1. Open App
+2. Home Screen → Tap “Start”
+3. Camera opens
+4. Scan Marker 1
+5. AR clue appears
+6. User interacts → next hint revealed
+7. Repeat until final marker
+8. Show completion screen
+
+
+
+ 7. 📦 Assets Required
+
+ Visual:
+
+* Marker images (printed)
+* 3D objects (treasure chest, arrows)
+* UI icons
+
+ Audio:
+
+* Click sounds
+* Success sound
+* Optional narration
+
+
+
+ 8. ⏱️ Development Timeline (Rapid Prototype)
+
+| Task                  | Time    |
+|  |  |
+| Setup Unity + Vuforia | 2–3 hrs |
+| Marker creation       | 1 hr    |
+| AR detection logic    | 3–5 hrs |
+| UI implementation     | 3 hrs   |
+| Interaction + sound   | 2–3 hrs |
+| Testing               | 2 hrs   |
+
+👉 **Total: ~1–2 days for demo version**
+
+
+
+ 9. 🚧 Constraints
+
+* Works only with predefined markers
+* Requires good lighting
+* Android preferred for quick deployment
+
+
+
+ 10. ✅ Success Criteria
+
+* All markers scan correctly
+* Clues appear in sequence
+* Interaction works smoothly
+* App runs without crashes
+* UI is clean and understandable
+
+
+
+ 11. 🚀 Future Enhancements
+
+* GPSbased treasure hunt
+* Multiplayer mode
+* Timer and scoring system
+* Cloudbased progress
+
+
