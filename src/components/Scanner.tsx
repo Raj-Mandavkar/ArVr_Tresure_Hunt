@@ -67,11 +67,11 @@ export function Scanner({ onScan, isActive, className }: ScannerProps) {
   };
 
   return (
-    <div className={cn("relative overflow-hidden w-full h-full bg-slate-900 rounded-2xl border-4 border-slate-800 shadow-2xl flex items-center justify-center", className)}>
+    <div className={cn("relative overflow-hidden w-full h-full bg-black rounded-none border-none shadow-none flex items-center justify-center", className)}>
       {cameraError ? (
-        <div className="text-center p-6 text-red-400">
-          <Camera className="w-12 h-12 mx-auto mb-4 opacity-50" />
-          <p>{cameraError}</p>
+        <div className="text-center p-6 text-red-300 bg-red-500/20 backdrop-blur-lg rounded-2xl border border-red-500/40">
+          <Camera className="w-16 h-16 mx-auto mb-4 opacity-70" />
+          <p className="font-semibold">{cameraError}</p>
         </div>
       ) : (
         <>
@@ -82,18 +82,34 @@ export function Scanner({ onScan, isActive, className }: ScannerProps) {
             onUserMediaError={handleUserMediaError}
             className="absolute inset-0 w-full h-full object-cover"
           />
+          
+          {/* Gradient overlay for better contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" />
+          
           {/* Target Reticle Overlay */}
           <div className="absolute inset-0 z-10 pointer-events-none flex flex-col items-center justify-center">
-             <div className="w-64 h-64 border-2 border-white/50 rounded-[40px] relative">
-               <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-cyan-400 rounded-tl-[40px]"></div>
-               <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-cyan-400 rounded-tr-[40px]"></div>
-               <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-cyan-400 rounded-bl-[40px]"></div>
-               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-cyan-400 rounded-br-[40px]"></div>
+             {/* Main scanning frame */}
+             <div className="w-72 h-72 border border-cyan-400/40 rounded-[50px] relative shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+               {/* Corner markers */}
+               <div className="absolute top-0 left-0 w-10 h-10 border-t-4 border-l-4 border-cyan-400 rounded-tl-[20px] shadow-lg"></div>
+               <div className="absolute top-0 right-0 w-10 h-10 border-t-4 border-r-4 border-cyan-400 rounded-tr-[20px] shadow-lg"></div>
+               <div className="absolute bottom-0 left-0 w-10 h-10 border-b-4 border-l-4 border-cyan-400 rounded-bl-[20px] shadow-lg"></div>
+               <div className="absolute bottom-0 right-0 w-10 h-10 border-b-4 border-r-4 border-cyan-400 rounded-br-[20px] shadow-lg"></div>
                
                {/* Scanning line animation */}
-               <div className="absolute left-0 right-0 h-0.5 bg-cyan-400/80 shadow-[0_0_8px_2px_rgba(34,211,238,0.6)] animate-[scan_2s_ease-in-out_infinite]" />
+               {isActive && (
+                 <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_12px_rgba(34,211,238,0.8)] animate-[scan_2s_ease-in-out_infinite]" />
+               )}
+               
+               {/* Center focus point */}
+               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,1)] animate-pulse" />
              </div>
-             {isActive && <div className="mt-6 text-white/80 font-mono text-sm tracking-widest bg-black/40 px-4 py-1 rounded-full backdrop-blur-sm shadow flex items-center gap-2"><RefreshCw className="w-4 h-4 animate-spin"/> SCANNING MARKER</div>}
+             
+             {isActive && (
+               <div className="mt-10 text-cyan-300 font-bold text-sm tracking-widest bg-black/60 px-6 py-2 rounded-full backdrop-blur-lg shadow-lg border border-cyan-400/30 flex items-center gap-2">
+                 <RefreshCw className="w-4 h-4 animate-spin"/> SCANNING MARKER
+               </div>
+             )}
           </div>
         </>
       )}
